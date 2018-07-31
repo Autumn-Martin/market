@@ -65,4 +65,12 @@ class MarketTest < Minitest::Test
     expected = ["Banana Nice Cream", "Peach-Raspberry Nice Cream", "Peaches", "Tomatoes"]
     assert_equal expected, @market.sorted_item_list
   end
+
+  def test_it_has_a_inventory_of_items_and_totals
+    @market.add_vendor(@vendor_1)
+    @market.add_vendor(@vendor_2)
+    @market.add_vendor(@vendor_3)
+    expected = {"Peaches"=>100, "Tomatoes"=>7, "Banana Nice Cream"=>50, "Peach-Raspberry Nice Cream"=>25}
+    assert_equal expected, @market.total_inventory 
+  end
 end
